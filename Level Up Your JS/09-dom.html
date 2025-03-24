@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dom Projects</title>
+  </head>
+  <body>
+    <p>Youtube Subscribe Button</p>
+    <button class="subscribe">Subscribe</button>
+
+    <p>Amazon Shipping Calculator</p>
+    <input class="input" placeholder="cost of order" />
+
+    <button id="calculateBtn">Calculate</button>
+    <p class="resultText"></p>
+
+    <script>
+      const subscribeBtn = document.querySelector(".subscribe");
+      const calculateBtn = document.querySelector("#calculateBtn");
+      const inputText = document.querySelector(".input");
+      const resultText = document.querySelector(".resultText");
+
+      let result = 0;
+
+      function calculateTotal() {
+        if (inputText.value < 40) {
+          result = Number(inputText.value) + 10;
+          resultText.innerHTML = `$${result}`;
+        } else {
+          result = inputText.value;
+          resultText.innerHTML = `$${inputText.value}`;
+        }
+        return result;
+      }
+      calculateBtn.addEventListener("click", calculateTotal);
+      inputText.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+          calculateTotal();
+        }
+      });
+
+      subscribeBtn.addEventListener("click", () => {
+        console.log("Hello");
+        if (subscribeBtn.innerText === "Subscribe") {
+          subscribeBtn.innerHTML = "Subscribed";
+        } else {
+          subscribeBtn.innerHTML = "Subscribe";
+        }
+      });
+    </script>
+  </body>
+</html>

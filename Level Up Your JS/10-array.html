@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array</title>
+  </head>
+  <body>
+    <p>Todo List Practice 1</p>
+    <input placeholder="Todo name" class="input1" />
+    <button onclick="createTodo()">Add</button>
+
+    <!-- <p>Todo List Practice 2</p>
+    <input placeholder="Todo name" class="input" />
+    <button onclick="createTodo()">Add</button>
+    <ul class="list"></ul> -->
+
+    <p>Todo List Practice 3</p>
+    <input placeholder="Todo name" class="input" />
+    <input placeholder="Todo name" type="date" class="date" />
+    <button onclick="createTodo(renderTodos)">Add</button>
+    <ul class="list"></ul>
+    <script>
+      //   const arr = [10, 20, 30, 40, 50, 70];
+      //   arr.splice(0, 3);
+      //   console.log(arr);
+
+      const inputText = document.querySelector(".input");
+      const inputDate = document.querySelector(".date");
+      const list = document.querySelector(".list");
+      const todos = [];
+
+      function createTodo(cb) {
+        const todoText = inputText.value.trim();
+        const todoDate = inputDate.value.trim();
+        if (!todoText) return;
+
+        todos.push({
+          text: todoText,
+          date: todoDate,
+        });
+        inputText.value = "";
+        todoDate.value = "";
+        cb();
+      }
+
+      function deleteTodo(index, cb) {
+        todos.splice(index, 1);
+        cb();
+      }
+
+      function renderTodos() {
+        list.innerHTML = todos
+          .map(
+            (todo, i) =>
+              `<li>${todo.text}: ${todo.date} <button onclick="deleteTodo(${i}, rendorTodos)">Delete</button></li>`
+          )
+          .join("");
+      }
+    </script>
+  </body>
+</html>

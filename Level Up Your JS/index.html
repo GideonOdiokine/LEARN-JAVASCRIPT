@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learning Javascript - Beginners to Pro</title>
+  </head>
+  <body>
+    <h3>Cart Quality</h3>
+
+    <button id="showQuality">Show Quality</button>
+    <button id="addToCart">Add to cart</button>
+    <button id="addTwo">+2</button>
+    <button id="addThree">+3</button>
+    <button id="resetCart">Reset Cart</button>
+    <script>
+      const cart = {
+        quality: 0,
+        showQuality() {
+          console.log(`Cart quality: ${this.quality}`);
+        },
+        addToCart() {
+          this.quality++;
+          console.log(`Cart quality: ${this.quality}`);
+        },
+        addTwo() {
+          this.quality += 2;
+          console.log(`Cart quality: ${this.quality}`);
+        },
+        addThree() {
+          this.quality += 3;
+          console.log(`Cart quality: ${this.quality}`);
+        },
+        resetCart() {
+          this.quality = 0;
+          console.log(`Cart quality: ${this.quality}`);
+        },
+      };
+
+      document
+        .getElementById("showQuality")
+        .addEventListener("click", function () {
+          cart.showQuality();
+        });
+      document
+        .getElementById("addToCart")
+        .addEventListener("click", function () {
+          cart.addToCart();
+        });
+      document.getElementById("addTwo").addEventListener("click", function () {
+        cart.addTwo();
+      });
+      document
+        .getElementById("addThree")
+        .addEventListener("click", function () {
+          cart.addThree();
+        });
+      document
+        .getElementById("resetCart")
+        .addEventListener("click", function () {
+          cart.resetCart();
+        });
+    </script>
+  </body>
+</html>
