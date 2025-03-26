@@ -100,16 +100,28 @@ class SinglyLinkedList {
     prev.next = newNode;
     newNode.next = temp;
     this.length++;
-    return true
+    return true;
+  }
+
+  remove(index) {
+    if (index < 0 || index > this.length) return undefined;
+    if (index === 0) return this.shift();
+    if (index === this.length - 1) return this.pop();
+    var previousNode = this.get(index - 1)
+    var removed = previousNode.next;
+    previousNode.next = removed.next
+    this.length--;
+    return removed
   }
 }
+// 100, 201, 250, 350
+
 
 const first = new SinglyLinkedList();
-first.push("Hello");
-first.push("There");
-first.push("Gideon");
-first.get(1);
-// first.set(2, "Samuel");
+first.push(100)
+first.push(201)
+first.push(250)
+first.push(350)
 
 console.log(first);
 
