@@ -17,14 +17,24 @@ class Queue {
     if (!this.first) {
       this.first = newNode;
       this.last = newNode;
-    }else{
-         this.last.next = newNode;
-         this.last = newNode;
+    } else {
+      this.last.next = newNode;
+      this.last = newNode;
     }
 
-
-    this.size++;
-    return this
+    return ++this.size;
   }
-  dequeue() {}
+  dequeue() {
+    if (!this.first) return null;
+
+    var currentFirstQueueToRemove = this.first;
+    if (this.first === this.last) {
+      this.last = null;
+    }
+
+    this.first = currentFirstQueueToRemove.next;
+
+    this.size--;
+    return currentFirstQueueToRemove.value;
+  }
 }
