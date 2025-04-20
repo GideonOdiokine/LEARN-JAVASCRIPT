@@ -11,33 +11,46 @@ class BinarySearchTree {
     this.root = null;
   }
 
-  insert(val) {
-    var newNode = new Node(val);
-    if (!this.root) {
+  insert(value) {
+    var newNode = new Node(value);
+
+    if (this.root === null) {
       this.root = newNode;
       return this;
     } else {
       var current = this.root;
-
       while (true) {
-        if (val === current.value) return undefined;
-        if (val < current.value) {
+        if (value === current.value) return undefined;
+        if (value < current.value) {
           if (current.left === null) {
             current.left = newNode;
             return this;
-          } else {
-            current = current.left;
           }
-        } else if (val > current.value) {
+          current = current.left;
+        } else if (value > current.value) {
           if (current.right === null) {
             current.right = newNode;
             return this;
-          } else {
-            current = current.right;
           }
+          current = current.right;
         }
       }
     }
+  }
+
+  find(value) {
+    if (this.root === null) return false;
+    var current = this.root;
+
+    while (current) {
+      if (value === current.value) return true;
+      if (value < current.value) {
+        current = current.left;
+      } else if (value > current.value) {
+        current = current.right;
+      }
+    }
+    return false;
   }
 }
 
@@ -50,7 +63,7 @@ tree.insert(16);
 tree.insert(7);
 tree.insert(2);
 tree.insert(3);
-console.log(tree);
+console.log(tree.find(11));
 
 // Pain in the ass way of creating a tree manually
 // var tree = new BinarySearchTree();
